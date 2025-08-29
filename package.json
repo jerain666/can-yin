@@ -1,0 +1,16 @@
+{
+  "name": "store-investment-calculator",
+  "version": "1.0.0",
+  "description": "A web-based store investment calculator",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000",
+    "build": "echo 'No build process needed'"
+  },
+  "keywords": ["calculator", "investment", "store", "business"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
