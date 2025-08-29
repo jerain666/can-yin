@@ -14,356 +14,244 @@
 
         :root {
             --primary: #3498db;
-            --primary-light: #5dade2;
             --primary-dark: #2980b9;
             --secondary: #2c3e50;
-            --accent1: #16a085;
-            --accent2: #e67e22;
-            --accent3: #9b59b6;
-            --light: #f8f9fa;
-            --light-gray: #ecf0f1;
-            --gray: #bdc3c7;
-            --dark: #34495e;
-            --text: #2c3e50;
+            --light: #ecf0f1;
             --success: #27ae60;
-            --warning: #f39c12;
+            --warning: #e67e22;
             --danger: #e74c3c;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --radius: 8px;
+            --gray: #95a5a6;
+            --dark: #34495e;
+            --card-border: #ddd;
         }
 
         body {
-            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: #f8f9fa;
             min-height: 100vh;
             padding: 20px;
+            font-size: 14px;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
             background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
 
         header {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            background: var(--secondary);
             color: white;
-            padding: 25px 30px;
+            padding: 15px 20px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: -30px;
-            left: -30px;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
         }
 
         header h1 {
-            margin-bottom: 10px;
-            font-size: 28px;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 5px;
+            font-size: 20px;
         }
 
         header p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 16px;
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
+            color: var(--light);
+            font-size: 13px;
         }
 
-        .calculator-layout {
+        .calculator-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding: 30px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 20px;
         }
 
-        @media (max-width: 1200px) {
-            .calculator-layout {
-                grid-template-columns: repeat(2, 1fr);
+        @media (min-width: 1200px) {
+            .calculator-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            .calculator-layout {
+            .calculator-grid {
                 grid-template-columns: 1fr;
             }
         }
 
         .calc-card {
             background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .calc-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
 
         .card-header {
-            padding: 18px 20px;
-            color: white;
+            background: var(--light);
+            padding: 12px 15px;
+            cursor: pointer;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 12px;
-        }
-
-        .card-header i {
-            font-size: 20px;
+            border-bottom: 1px solid var(--card-border);
         }
 
         .card-header h2 {
-            font-size: 18px;
+            font-size: 15px;
+            color: var(--secondary);
             margin: 0;
-            font-weight: 600;
-        }
-
-        .cost-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        }
-
-        .profit-header {
-            background: linear-gradient(135deg, var(--accent1) 0%, #1abc9c 100%);
-        }
-
-        .break-even-header {
-            background: linear-gradient(135deg, var(--accent2) 0%, #d35400 100%);
-        }
-
-        .payback-header {
-            background: linear-gradient(135deg, var(--accent3) 0%, #8e44ad 100%);
         }
 
         .card-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+            padding: 15px;
         }
 
         .input-group {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .input-group label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 3px;
             font-weight: 500;
             color: var(--dark);
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .input-group label i {
-            color: var(--primary);
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .input-group input {
             width: 100%;
-            padding: 10px 12px;
-            border: 1px solid var(--gray);
+            padding: 8px 10px;
+            border: 1px solid #ced4da;
             border-radius: 4px;
-            font-size: 14px;
-            transition: all 0.3s;
+            font-size: 13px;
         }
 
         .input-group input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
 
         .result-box {
-            background: var(--light);
-            padding: 15px;
-            border-radius: var(--radius);
-            margin-top: auto;
+            background: #e8f4fc;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 12px;
             text-align: center;
-            border-left: 4px solid var(--primary);
         }
 
         .result-box h4 {
-            color: var(--dark);
-            margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 5px;
+            font-size: 13px;
         }
 
         .result-value {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--primary);
         }
 
         .summary-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 25px 30px;
-            margin: 0 30px 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            background: var(--light);
+            padding: 15px 20px;
+            margin: 0 20px 20px;
+            border-radius: 6px;
         }
 
         .summary-section h3 {
             color: var(--secondary);
-            margin-bottom: 20px;
-            font-size: 20px;
+            margin-bottom: 12px;
+            font-size: 15px;
             text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
         }
 
         .summary-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
         }
 
-        @media (max-width: 992px) {
+        @media (min-width: 768px) {
             .summary-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 576px) {
-            .summary-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
         .summary-item {
             text-align: center;
-            padding: 20px 15px;
+            padding: 10px;
             background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
-
-        .summary-item:hover {
-            transform: translateY(-3px);
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         .summary-item h4 {
             color: var(--dark);
-            font-size: 14px;
-            margin-bottom: 10px;
-            font-weight: 500;
+            font-size: 12px;
+            margin-bottom: 5px;
         }
 
         .summary-item .value {
-            font-size: 24px;
+            font-size: 16px;
             font-weight: 700;
-        }
-
-        .summary-total .value {
             color: var(--primary);
-        }
-
-        .summary-margin .value {
-            color: var(--accent1);
-        }
-
-        .summary-break-even .value {
-            color: var(--accent2);
-        }
-
-        .summary-payback .value {
-            color: var(--accent3);
         }
 
         .action-buttons {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             justify-content: center;
-            padding: 0 30px 30px;
+            padding: 0 20px 20px;
         }
 
         .btn {
-            padding: 12px 25px;
+            padding: 8px 16px;
             border: none;
-            border-radius: 50px;
-            font-size: 16px;
+            border-radius: 4px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: var(--shadow);
+            transition: all 0.2s;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: var(--primary);
             color: white;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+            background: var(--primary-dark);
         }
 
         .btn-secondary {
-            background: white;
+            background: var(--light);
             color: var(--dark);
-            border: 1px solid var(--gray);
         }
 
         .btn-secondary:hover {
-            background: var(--light);
-            transform: translateY(-2px);
+            background: #dde4e6;
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            color: var(--dark);
-            font-size: 14px;
-            border-top: 1px solid var(--light-gray);
-            background: var(--light);
+            padding: 15px;
+            color: var(--gray);
+            font-size: 12px;
+            border-top: 1px solid #dee2e6;
         }
 
-        .card-hint {
-            font-size: 12px;
-            color: var(--gray);
-            margin-top: 5px;
-            font-style: italic;
+        .collapsed .card-content {
+            display: none;
+        }
+
+        .card-icon {
+            transition: transform 0.3s;
+        }
+
+        .collapsed .card-icon {
+            transform: rotate(-90deg);
         }
     </style>
 </head>
@@ -371,40 +259,60 @@
     <div class="container">
         <header>
             <h1><i class="fas fa-calculator"></i> 店铺投资计算器</h1>
-            <p>一站式计算您的开店成本、盈利能力、盈亏平衡点和回本周期</p>
+            <p>轻松计算您的开店成本、盈利能力和回本周期</p>
         </header>
 
-        <div class="calculator-layout">
+        <div class="calculator-grid">
             <!-- 建店成本部分 -->
             <div class="calc-card">
-                <div class="card-header cost-header">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <h2>建店成本</h2>
+                <div class="card-header" onclick="toggleCard(this.parentNode)">
+                    <h2><i class="fas fa-money-bill-wave"></i> 建店成本</h2>
+                    <span class="card-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
                 <div class="card-content">
                     <div class="input-group">
-                        <label><i class="fas fa-exchange-alt"></i> 转让费 (元)</label>
-                        <input type="number" id="transferFee" placeholder="输入转让费">
+                        <label for="transferFee">转让费 (元):</label>
+                        <input type="number" id="transferFee" placeholder="转让费金额">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-home"></i> 房租押金 (元)</label>
-                        <input type="number" id="rentDeposit" placeholder="输入房租押金">
+                        <label for="rentDeposit">房租押金 (元):</label>
+                        <input type="number" id="rentDeposit" placeholder="房租押金金额">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-graduation-cap"></i> 技术学习费 (元)</label>
-                        <input type="number" id="techFee" placeholder="输入技术学习费">
+                        <label for="techFee">技术学习费 (元):</label>
+                        <input type="number" id="techFee" placeholder="技术学习费金额">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-paint-roller"></i> 装修费用 (元)</label>
-                        <input type="number" id="decoration" placeholder="输入装修费用">
+                        <label for="decoration">装修费用 (元):</label>
+                        <input type="number" id="decoration" placeholder="装修费用">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-bullhorn"></i> 广告费用 (元)</label>
-                        <input type="number" id="advertisement" placeholder="输入广告费用">
+                        <label for="advertisement">广告费用 (元):</label>
+                        <input type="number" id="advertisement" placeholder="广告费用">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-tools"></i> 设备费用 (元)</label>
-                        <input type="number" id="equipment" placeholder="输入设备费用">
+                        <label for="equipment">设备费用 (元):</label>
+                        <input type="number" id="equipment" placeholder="设备费用">
+                    </div>
+                    <div class="input-group">
+                        <label for="material">首批物料 (元):</label>
+                        <input type="number" id="material" placeholder="首批物料费用">
+                    </div>
+                    <div class="input-group">
+                        <label for="threeMonthsRent">3个月店租 (元):</label>
+                        <input type="number" id="threeMonthsRent" placeholder="3个月店租总额">
+                    </div>
+                    <div class="input-group">
+                        <label for="labor">人工工资 (元):</label>
+                        <input type="number" id="labor" placeholder="人工工资总额">
+                    </div>
+                    <div class="input-group">
+                        <label for="marketing">营销费用 (元):</label>
+                        <input type="number" id="marketing" placeholder="营销费用">
+                    </div>
+                    <div class="input-group">
+                        <label for="reserve">预备资金 (元):</label>
+                        <input type="number" id="reserve" placeholder="预备资金">
                     </div>
                     
                     <div class="result-box">
@@ -416,24 +324,23 @@
 
             <!-- 毛利率计算部分 -->
             <div class="calc-card">
-                <div class="card-header profit-header">
-                    <i class="fas fa-chart-line"></i>
-                    <h2>毛利率</h2>
+                <div class="card-header" onclick="toggleCard(this.parentNode)">
+                    <h2><i class="fas fa-chart-line"></i> 毛利率</h2>
+                    <span class="card-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
                 <div class="card-content">
                     <div class="input-group">
-                        <label><i class="fas fa-tag"></i> 小吃单价 (元)</label>
-                        <input type="number" id="snackPrice" placeholder="输入小吃单价">
+                        <label for="snackPrice">小吃单价 (元):</label>
+                        <input type="number" id="snackPrice" placeholder="小吃单价">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-carrot"></i> 食材成本 (元)</label>
-                        <input type="number" id="materialCost" placeholder="输入食材成本">
+                        <label for="materialCost">食材成本 (元):</label>
+                        <input type="number" id="materialCost" placeholder="食材成本">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-box-open"></i> 包装成本 (元)</label>
-                        <input type="number" id="packagingCost" placeholder="输入包装成本">
+                        <label for="packagingCost">包装成本 (元):</label>
+                        <input type="number" id="packagingCost" placeholder="包装成本">
                     </div>
-                    <p class="card-hint">毛利率 = (售价 - 食材成本 - 包装成本) / 售价 × 100%</p>
                     
                     <div class="result-box">
                         <h4>毛利率</h4>
@@ -444,26 +351,26 @@
 
             <!-- 盈亏平衡点计算部分 -->
             <div class="calc-card">
-                <div class="card-header break-even-header">
-                    <i class="fas fa-balance-scale"></i>
-                    <h2>盈亏平衡</h2>
+                <div class="card-header" onclick="toggleCard(this.parentNode)">
+                    <h2><i class="fas fa-balance-scale"></i> 盈亏平衡</h2>
+                    <span class="card-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
                 <div class="card-content">
                     <div class="input-group">
-                        <label><i class="fas fa-home"></i> 每日房租 (元)</label>
-                        <input type="number" id="dailyRent" placeholder="输入每日房租">
+                        <label for="dailyRent">每日房租 (元):</label>
+                        <input type="number" id="dailyRent" placeholder="每日房租">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-user-clock"></i> 每日人工工资 (元)</label>
-                        <input type="number" id="dailyLabor" placeholder="输入每日人工工资">
+                        <label for="dailyLabor">每日人工工资 (元):</label>
+                        <input type="number" id="dailyLabor" placeholder="每日人工工资">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-bolt"></i> 每日能源成本 (元)</label>
-                        <input type="number" id="dailyEnergy" placeholder="输入每日能源成本">
+                        <label for="dailyEnergy">每日能源成本 (元):</label>
+                        <input type="number" id="dailyEnergy" placeholder="每日能源成本">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-ellipsis-h"></i> 每日其他成本 (元)</label>
-                        <input type="number" id="dailyOther" placeholder="输入每日其他成本">
+                        <label for="dailyOther">每日其他成本 (元):</label>
+                        <input type="number" id="dailyOther" placeholder="每日其他成本">
                     </div>
                     
                     <div class="result-box">
@@ -475,30 +382,30 @@
 
             <!-- 回本周期计算部分 -->
             <div class="calc-card">
-                <div class="card-header payback-header">
-                    <i class="fas fa-history"></i>
-                    <h2>回本周期</h2>
+                <div class="card-header" onclick="toggleCard(this.parentNode)">
+                    <h2><i class="fas fa-history"></i> 回本周期</h2>
+                    <span class="card-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
                 <div class="card-content">
                     <div class="input-group">
-                        <label><i class="fas fa-graduation-cap"></i> 技术学习费 (元)</label>
-                        <input type="number" id="fixedTechFee" placeholder="输入技术学习费">
+                        <label for="fixedTechFee">技术学习费 (元):</label>
+                        <input type="number" id="fixedTechFee" placeholder="技术学习费">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-paint-roller"></i> 装修费用 (元)</label>
-                        <input type="number" id="fixedDecoration" placeholder="输入装修费用">
+                        <label for="fixedDecoration">装修费用 (元):</label>
+                        <input type="number" id="fixedDecoration" placeholder="装修费用">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-bullhorn"></i> 广告费用 (元)</label>
-                        <input type="number" id="fixedAd" placeholder="输入广告费用">
+                        <label for="fixedAd">广告费用 (元):</label>
+                        <input type="number" id="fixedAd" placeholder="广告费用">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-tools"></i> 设备费用 (元)</label>
-                        <input type="number" id="fixedEquipment" placeholder="输入设备费用">
+                        <label for="fixedEquipment">设备费用 (元):</label>
+                        <input type="number" id="fixedEquipment" placeholder="设备费用">
                     </div>
                     <div class="input-group">
-                        <label><i class="fas fa-money-bill-wave"></i> 单月利润 (元)</label>
-                        <input type="number" id="monthlyProfit" placeholder="输入单月利润">
+                        <label for="monthlyProfit">单月利润 (元):</label>
+                        <input type="number" id="monthlyProfit" placeholder="单月利润">
                     </div>
                     
                     <div class="result-box">
@@ -512,19 +419,19 @@
         <div class="summary-section">
             <h3><i class="fas fa-chart-pie"></i> 投资概览</h3>
             <div class="summary-grid">
-                <div class="summary-item summary-total">
+                <div class="summary-item">
                     <h4>总投资额</h4>
                     <div class="value" id="summaryTotal">0 元</div>
                 </div>
-                <div class="summary-item summary-margin">
+                <div class="summary-item">
                     <h4>毛利率</h4>
                     <div class="value" id="summaryMargin">0%</div>
                 </div>
-                <div class="summary-item summary-break-even">
+                <div class="summary-item">
                     <h4>每日盈亏平衡点</h4>
                     <div class="value" id="summaryBreakEven">0 元</div>
                 </div>
-                <div class="summary-item summary-payback">
+                <div class="summary-item">
                     <h4>回本周期</h4>
                     <div class="value" id="summaryPayback">0 个月</div>
                 </div>
@@ -532,21 +439,28 @@
         </div>
 
         <div class="action-buttons">
-            <button class="btn btn-primary" id="calculateBtn">
-                <i class="fas fa-calculator"></i> 计算所有结果
-            </button>
-            <button class="btn btn-secondary" id="resetBtn">
-                <i class="fas fa-redo"></i> 重置数据
-            </button>
+            <button class="btn btn-primary" id="calculateBtn"><i class="fas fa-calculator"></i> 计算所有结果</button>
+            <button class="btn btn-secondary" id="resetBtn"><i class="fas fa-redo"></i> 重置数据</button>
         </div>
 
         <footer>
-            <p>© 2023 店铺投资计算器 | 设计精美，计算精准，助力您的创业之路</p>
+            <p>© 2023 店铺投资计算器 | 使用提示：填写数据后点击"计算所有结果"</p>
         </footer>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // 折叠面板功能
+            window.toggleCard = function(card) {
+                card.classList.toggle('collapsed');
+            };
+            
+            // 默认展开所有卡片
+            const cards = document.querySelectorAll('.calc-card');
+            cards.forEach(card => {
+                card.classList.remove('collapsed');
+            });
+            
             // 计算按钮
             const calculateBtn = document.getElementById('calculateBtn');
             calculateBtn.addEventListener('click', function() {
@@ -591,9 +505,15 @@
                 const decoration = parseFloat(document.getElementById('decoration').value) || 0;
                 const advertisement = parseFloat(document.getElementById('advertisement').value) || 0;
                 const equipment = parseFloat(document.getElementById('equipment').value) || 0;
+                const material = parseFloat(document.getElementById('material').value) || 0;
+                const threeMonthsRent = parseFloat(document.getElementById('threeMonthsRent').value) || 0;
+                const labor = parseFloat(document.getElementById('labor').value) || 0;
+                const marketing = parseFloat(document.getElementById('marketing').value) || 0;
+                const reserve = parseFloat(document.getElementById('reserve').value) || 0;
                 
                 const totalCost = transferFee + rentDeposit + techFee + decoration + 
-                                 advertisement + equipment;
+                                 advertisement + equipment + material + threeMonthsRent + 
+                                 labor + marketing + reserve;
                 
                 document.getElementById('totalCost').textContent = totalCost.toFixed(2) + ' 元';
                 return totalCost;
@@ -652,7 +572,7 @@
             function updateSummary() {
                 document.getElementById('summaryTotal').textContent = calculateTotalCost().toFixed(2) + ' 元';
                 document.getElementById('summaryMargin').textContent = calculateProfitMargin().toFixed(2) + '%';
-                document.getElementById('summaryBreakEven').textContent = calculateBreakEvenPoint().toFixed(2) + ' 元/天';
+                document.getElementById('summaryBreakEven').textContent = calculateBreakEvenPoint().toFixed(2) + ' 元';
                 document.getElementById('summaryPayback').textContent = calculatePaybackPeriod().toFixed(1) + ' 个月';
             }
         });
