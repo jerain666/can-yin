@@ -61,50 +61,53 @@
             font-size: 13px;
         }
 
-        .calculator-grid {
+        .calculator-layout {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 15px;
             padding: 20px;
         }
 
-        @media (min-width: 1200px) {
-            .calculator-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .calculator-grid {
+        @media (max-width: 992px) {
+            .calculator-layout {
                 grid-template-columns: 1fr;
             }
         }
 
-        .calc-card {
+        .calc-section {
             background: white;
             border: 1px solid var(--card-border);
             border-radius: 6px;
             overflow: hidden;
         }
 
-        .card-header {
+        .section-header {
             background: var(--light);
             padding: 12px 15px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             border-bottom: 1px solid var(--card-border);
         }
 
-        .card-header h2 {
+        .section-header h2 {
             font-size: 15px;
             color: var(--secondary);
             margin: 0;
         }
 
-        .card-content {
+        .section-content {
             padding: 15px;
+        }
+
+        /* 建店成本的双列布局 */
+        .cost-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 576px) {
+            .cost-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .input-group {
@@ -242,16 +245,24 @@
             border-top: 1px solid #dee2e6;
         }
 
-        .collapsed .card-content {
-            display: none;
+        .sub-section {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
         }
 
-        .card-icon {
-            transition: transform 0.3s;
+        .sub-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
-        .collapsed .card-icon {
-            transform: rotate(-90deg);
+        .sub-section h3 {
+            font-size: 14px;
+            color: var(--dark);
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
         }
     </style>
 </head>
@@ -262,57 +273,75 @@
             <p>轻松计算您的开店成本、盈利能力和回本周期</p>
         </header>
 
-        <div class="calculator-grid">
-            <!-- 建店成本部分 -->
-            <div class="calc-card">
-                <div class="card-header" onclick="toggleCard(this.parentNode)">
+        <div class="calculator-layout">
+            <!-- 建店成本部分 - 双列 -->
+            <div class="calc-section">
+                <div class="section-header">
                     <h2><i class="fas fa-money-bill-wave"></i> 建店成本</h2>
-                    <span class="card-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
-                <div class="card-content">
-                    <div class="input-group">
-                        <label for="transferFee">转让费 (元):</label>
-                        <input type="number" id="transferFee" placeholder="转让费金额">
-                    </div>
-                    <div class="input-group">
-                        <label for="rentDeposit">房租押金 (元):</label>
-                        <input type="number" id="rentDeposit" placeholder="房租押金金额">
-                    </div>
-                    <div class="input-group">
-                        <label for="techFee">技术学习费 (元):</label>
-                        <input type="number" id="techFee" placeholder="技术学习费金额">
-                    </div>
-                    <div class="input-group">
-                        <label for="decoration">装修费用 (元):</label>
-                        <input type="number" id="decoration" placeholder="装修费用">
-                    </div>
-                    <div class="input-group">
-                        <label for="advertisement">广告费用 (元):</label>
-                        <input type="number" id="advertisement" placeholder="广告费用">
-                    </div>
-                    <div class="input-group">
-                        <label for="equipment">设备费用 (元):</label>
-                        <input type="number" id="equipment" placeholder="设备费用">
-                    </div>
-                    <div class="input-group">
-                        <label for="material">首批物料 (元):</label>
-                        <input type="number" id="material" placeholder="首批物料费用">
-                    </div>
-                    <div class="input-group">
-                        <label for="threeMonthsRent">3个月店租 (元):</label>
-                        <input type="number" id="threeMonthsRent" placeholder="3个月店租总额">
-                    </div>
-                    <div class="input-group">
-                        <label for="labor">人工工资 (元):</label>
-                        <input type="number" id="labor" placeholder="人工工资总额">
-                    </div>
-                    <div class="input-group">
-                        <label for="marketing">营销费用 (元):</label>
-                        <input type="number" id="marketing" placeholder="营销费用">
-                    </div>
-                    <div class="input-group">
-                        <label for="reserve">预备资金 (元):</label>
-                        <input type="number" id="reserve" placeholder="预备资金">
+                <div class="section-content">
+                    <div class="cost-grid">
+                        <!-- 左列 -->
+                        <div>
+                            <div class="sub-section">
+                                <h3>押金相关</h3>
+                                <div class="input-group">
+                                    <label for="transferFee">转让费 (元):</label>
+                                    <input type="number" id="transferFee" placeholder="转让费金额">
+                                </div>
+                                <div class="input-group">
+                                    <label for="rentDeposit">房租押金 (元):</label>
+                                    <input type="number" id="rentDeposit" placeholder="房租押金金额">
+                                </div>
+                            </div>
+                            
+                            <div class="sub-section">
+                                <h3>固定成本</h3>
+                                <div class="input-group">
+                                    <label for="techFee">技术学习费 (元):</label>
+                                    <input type="number" id="techFee" placeholder="技术学习费金额">
+                                </div>
+                                <div class="input-group">
+                                    <label for="decoration">装修费用 (元):</label>
+                                    <input type="number" id="decoration" placeholder="装修费用">
+                                </div>
+                                <div class="input-group">
+                                    <label for="advertisement">广告费用 (元):</label>
+                                    <input type="number" id="advertisement" placeholder="广告费用">
+                                </div>
+                                <div class="input-group">
+                                    <label for="equipment">设备费用 (元):</label>
+                                    <input type="number" id="equipment" placeholder="设备费用">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 右列 -->
+                        <div>
+                            <div class="sub-section">
+                                <h3>经营成本</h3>
+                                <div class="input-group">
+                                    <label for="material">首批物料 (元):</label>
+                                    <input type="number" id="material" placeholder="首批物料费用">
+                                </div>
+                                <div class="input-group">
+                                    <label for="threeMonthsRent">3个月店租 (元):</label>
+                                    <input type="number" id="threeMonthsRent" placeholder="3个月店租总额">
+                                </div>
+                                <div class="input-group">
+                                    <label for="labor">人工工资 (元):</label>
+                                    <input type="number" id="labor" placeholder="人工工资总额">
+                                </div>
+                                <div class="input-group">
+                                    <label for="marketing">营销费用 (元):</label>
+                                    <input type="number" id="marketing" placeholder="营销费用">
+                                </div>
+                                <div class="input-group">
+                                    <label for="reserve">预备资金 (元):</label>
+                                    <input type="number" id="reserve" placeholder="预备资金">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="result-box">
@@ -322,13 +351,13 @@
                 </div>
             </div>
 
-            <!-- 毛利率计算部分 -->
-            <div class="calc-card">
-                <div class="card-header" onclick="toggleCard(this.parentNode)">
+            <!-- 中间列 - 毛利率和盈亏平衡 -->
+            <div class="calc-section">
+                <!-- 毛利率部分 -->
+                <div class="section-header">
                     <h2><i class="fas fa-chart-line"></i> 毛利率</h2>
-                    <span class="card-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
-                <div class="card-content">
+                <div class="section-content">
                     <div class="input-group">
                         <label for="snackPrice">小吃单价 (元):</label>
                         <input type="number" id="snackPrice" placeholder="小吃单价">
@@ -347,15 +376,12 @@
                         <div class="result-value" id="profitMargin">0%</div>
                     </div>
                 </div>
-            </div>
-
-            <!-- 盈亏平衡点计算部分 -->
-            <div class="calc-card">
-                <div class="card-header" onclick="toggleCard(this.parentNode)">
+                
+                <!-- 盈亏平衡部分 -->
+                <div class="section-header">
                     <h2><i class="fas fa-balance-scale"></i> 盈亏平衡</h2>
-                    <span class="card-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
-                <div class="card-content">
+                <div class="section-content">
                     <div class="input-group">
                         <label for="dailyRent">每日房租 (元):</label>
                         <input type="number" id="dailyRent" placeholder="每日房租">
@@ -380,13 +406,12 @@
                 </div>
             </div>
 
-            <!-- 回本周期计算部分 -->
-            <div class="calc-card">
-                <div class="card-header" onclick="toggleCard(this.parentNode)">
+            <!-- 回本周期部分 -->
+            <div class="calc-section">
+                <div class="section-header">
                     <h2><i class="fas fa-history"></i> 回本周期</h2>
-                    <span class="card-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
-                <div class="card-content">
+                <div class="section-content">
                     <div class="input-group">
                         <label for="fixedTechFee">技术学习费 (元):</label>
                         <input type="number" id="fixedTechFee" placeholder="技术学习费">
@@ -450,17 +475,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 折叠面板功能
-            window.toggleCard = function(card) {
-                card.classList.toggle('collapsed');
-            };
-            
-            // 默认展开所有卡片
-            const cards = document.querySelectorAll('.calc-card');
-            cards.forEach(card => {
-                card.classList.remove('collapsed');
-            });
-            
             // 计算按钮
             const calculateBtn = document.getElementById('calculateBtn');
             calculateBtn.addEventListener('click', function() {
