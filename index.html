@@ -22,179 +22,198 @@
             --danger: #e74c3c;
             --gray: #95a5a6;
             --dark: #34495e;
+            --card-border: #ddd;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            line-height: 1.5;
             color: #333;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: #f8f9fa;
             min-height: 100vh;
             padding: 20px;
+            font-size: 14px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
 
         header {
             background: var(--secondary);
             color: white;
-            padding: 25px 30px;
+            padding: 15px 20px;
             text-align: center;
         }
 
         header h1 {
-            margin-bottom: 10px;
-            font-size: 28px;
+            margin-bottom: 5px;
+            font-size: 20px;
         }
 
         header p {
             color: var(--light);
-            font-size: 16px;
+            font-size: 13px;
         }
 
-        .tabs {
-            display: flex;
-            background: var(--light);
-            border-bottom: 2px solid var(--primary);
-        }
-
-        .tab-btn {
-            padding: 15px 25px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--dark);
-            transition: all 0.3s;
-            position: relative;
-            flex: 1;
-            text-align: center;
-        }
-
-        .tab-btn:hover {
-            background: rgba(52, 152, 219, 0.1);
-        }
-
-        .tab-btn.active {
-            color: var(--primary);
-            background: white;
-        }
-
-        .tab-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--primary);
-        }
-
-        .tab-content {
-            display: none;
-            padding: 25px;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .calc-grid {
+        .calculator-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 20px;
+        }
+
+        @media (min-width: 1200px) {
+            .calculator-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .calc-card {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            border-left: 4px solid var(--primary);
+            background: white;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            overflow: hidden;
         }
 
-        .calc-card h3 {
+        .card-header {
+            background: var(--light);
+            padding: 12px 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .card-header h2 {
+            font-size: 15px;
             color: var(--secondary);
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #dee2e6;
+            margin: 0;
+        }
+
+        .card-content {
+            padding: 15px;
         }
 
         .input-group {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .input-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             font-weight: 500;
             color: var(--dark);
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .input-group input {
             width: 100%;
-            padding: 10px 12px;
+            padding: 8px 10px;
             border: 1px solid #ced4da;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: border-color 0.3s;
+            border-radius: 4px;
+            font-size: 13px;
         }
 
         .input-group input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
 
         .result-box {
             background: #e8f4fc;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 12px;
             text-align: center;
         }
 
         .result-box h4 {
             color: var(--secondary);
             margin-bottom: 5px;
+            font-size: 13px;
         }
 
         .result-value {
-            font-size: 24px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .summary-section {
+            background: var(--light);
+            padding: 15px 20px;
+            margin: 0 20px 20px;
+            border-radius: 6px;
+        }
+
+        .summary-section h3 {
+            color: var(--secondary);
+            margin-bottom: 12px;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .summary-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .summary-item {
+            text-align: center;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .summary-item h4 {
+            color: var(--dark);
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .summary-item .value {
+            font-size: 16px;
             font-weight: 700;
             color: var(--primary);
         }
 
         .action-buttons {
             display: flex;
-            gap: 15px;
-            margin-top: 25px;
+            gap: 10px;
             justify-content: center;
+            padding: 0 20px 20px;
         }
 
         .btn {
-            padding: 12px 25px;
+            padding: 8px 16px;
             border: none;
-            border-radius: 6px;
-            font-size: 16px;
+            border-radius: 4px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
 
         .btn-primary {
@@ -215,65 +234,24 @@
             background: #dde4e6;
         }
 
-        .summary-section {
-            background: var(--light);
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 25px;
-        }
-
-        .summary-section h3 {
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .summary-item {
-            text-align: center;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-
-        .summary-item h4 {
-            color: var(--dark);
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .summary-item .value {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        @media (max-width: 768px) {
-            .tabs {
-                flex-direction: column;
-            }
-            
-            .calc-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .action-buttons {
-                flex-direction: column;
-            }
-        }
-
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 15px;
             color: var(--gray);
-            font-size: 14px;
+            font-size: 12px;
             border-top: 1px solid #dee2e6;
-            margin-top: 30px;
+        }
+
+        .collapsed .card-content {
+            display: none;
+        }
+
+        .card-icon {
+            transition: transform 0.3s;
+        }
+
+        .collapsed .card-icon {
+            transform: rotate(-90deg);
         }
     </style>
 </head>
@@ -284,186 +262,157 @@
             <p>轻松计算您的开店成本、盈利能力和回本周期</p>
         </header>
 
-        <div class="tabs">
-            <button class="tab-btn active" data-tab="cost"><i class="fas fa-money-bill-wave"></i> 建店成本</button>
-            <button class="tab-btn" data-tab="profit"><i class="fas fa-chart-line"></i> 毛利率</button>
-            <button class="tab-btn" data-tab="break-even"><i class="fas fa-balance-scale"></i> 盈亏平衡</button>
-            <button class="tab-btn" data-tab="payback"><i class="fas fa-history"></i> 回本周期</button>
-        </div>
-
-        <div class="tab-content active" id="cost">
-            <div class="calc-grid">
-                <div class="calc-card">
-                    <h3>押金相关</h3>
+        <div class="calculator-grid">
+            <!-- 建店成本部分 -->
+            <div class="calc-card">
+                <div class="card-header" onclick="toggleCard(this.parentNode)">
+                    <h2><i class="fas fa-money-bill-wave"></i> 建店成本</h2>
+                    <span class="card-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="card-content">
                     <div class="input-group">
                         <label for="transferFee">转让费 (元):</label>
-                        <input type="number" id="transferFee" placeholder="输入转让费金额">
+                        <input type="number" id="transferFee" placeholder="转让费金额">
                     </div>
                     <div class="input-group">
                         <label for="rentDeposit">房租押金 (元):</label>
-                        <input type="number" id="rentDeposit" placeholder="输入房租押金金额">
+                        <input type="number" id="rentDeposit" placeholder="房租押金金额">
                     </div>
-                </div>
-
-                <div class="calc-card">
-                    <h3>固定成本</h3>
                     <div class="input-group">
                         <label for="techFee">技术学习费 (元):</label>
-                        <input type="number" id="techFee" placeholder="输入技术学习费金额">
+                        <input type="number" id="techFee" placeholder="技术学习费金额">
                     </div>
                     <div class="input-group">
                         <label for="decoration">装修费用 (元):</label>
-                        <input type="number" id="decoration" placeholder="输入装修费用">
+                        <input type="number" id="decoration" placeholder="装修费用">
                     </div>
                     <div class="input-group">
                         <label for="advertisement">广告费用 (元):</label>
-                        <input type="number" id="advertisement" placeholder="输入广告费用">
+                        <input type="number" id="advertisement" placeholder="广告费用">
                     </div>
                     <div class="input-group">
                         <label for="equipment">设备费用 (元):</label>
-                        <input type="number" id="equipment" placeholder="输入设备费用">
+                        <input type="number" id="equipment" placeholder="设备费用">
                     </div>
-                </div>
-
-                <div class="calc-card">
-                    <h3>经营成本</h3>
                     <div class="input-group">
                         <label for="material">首批物料 (元):</label>
-                        <input type="number" id="material" placeholder="输入首批物料费用">
+                        <input type="number" id="material" placeholder="首批物料费用">
                     </div>
                     <div class="input-group">
                         <label for="threeMonthsRent">3个月店租 (元):</label>
-                        <input type="number" id="threeMonthsRent" placeholder="输入3个月店租总额">
+                        <input type="number" id="threeMonthsRent" placeholder="3个月店租总额">
                     </div>
                     <div class="input-group">
                         <label for="labor">人工工资 (元):</label>
-                        <input type="number" id="labor" placeholder="输入人工工资总额">
+                        <input type="number" id="labor" placeholder="人工工资总额">
                     </div>
                     <div class="input-group">
                         <label for="marketing">营销费用 (元):</label>
-                        <input type="number" id="marketing" placeholder="输入营销费用">
+                        <input type="number" id="marketing" placeholder="营销费用">
                     </div>
                     <div class="input-group">
                         <label for="reserve">预备资金 (元):</label>
-                        <input type="number" id="reserve" placeholder="输入预备资金">
+                        <input type="number" id="reserve" placeholder="预备资金">
+                    </div>
+                    
+                    <div class="result-box">
+                        <h4>总计资金</h4>
+                        <div class="result-value" id="totalCost">0 元</div>
                     </div>
                 </div>
             </div>
 
-            <div class="result-box">
-                <h4>总计资金</h4>
-                <div class="result-value" id="totalCost">0 元</div>
-            </div>
-        </div>
-
-        <div class="tab-content" id="profit">
-            <div class="calc-grid">
-                <div class="calc-card">
-                    <h3>产品定价</h3>
+            <!-- 毛利率计算部分 -->
+            <div class="calc-card">
+                <div class="card-header" onclick="toggleCard(this.parentNode)">
+                    <h2><i class="fas fa-chart-line"></i> 毛利率</h2>
+                    <span class="card-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="card-content">
                     <div class="input-group">
                         <label for="snackPrice">小吃单价 (元):</label>
-                        <input type="number" id="snackPrice" placeholder="输入小吃单价">
+                        <input type="number" id="snackPrice" placeholder="小吃单价">
                     </div>
                     <div class="input-group">
                         <label for="materialCost">食材成本 (元):</label>
-                        <input type="number" id="materialCost" placeholder="输入食材成本">
+                        <input type="number" id="materialCost" placeholder="食材成本">
                     </div>
                     <div class="input-group">
                         <label for="packagingCost">包装成本 (元):</label>
-                        <input type="number" id="packagingCost" placeholder="输入包装成本">
+                        <input type="number" id="packagingCost" placeholder="包装成本">
+                    </div>
+                    
+                    <div class="result-box">
+                        <h4>毛利率</h4>
+                        <div class="result-value" id="profitMargin">0%</div>
                     </div>
                 </div>
+            </div>
 
-                <div class="calc-card">
-                    <h3>毛利率说明</h3>
-                    <p>毛利率 = (营业额 - 食材成本 - 包装成本) / 营业额 × 100%</p>
-                    <p>毛利率是衡量产品盈利能力的重要指标，健康的毛利率通常在60%以上。</p>
+            <!-- 盈亏平衡点计算部分 -->
+            <div class="calc-card">
+                <div class="card-header" onclick="toggleCard(this.parentNode)">
+                    <h2><i class="fas fa-balance-scale"></i> 盈亏平衡</h2>
+                    <span class="card-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
-            </div>
-
-            <div class="result-box">
-                <h4>毛利率</h4>
-                <div class="result-value" id="profitMargin">0%</div>
-            </div>
-        </div>
-
-        <div class="tab-content" id="break-even">
-            <div class="calc-grid">
-                <div class="calc-card">
-                    <h3>每日运营成本</h3>
+                <div class="card-content">
                     <div class="input-group">
                         <label for="dailyRent">每日房租 (元):</label>
-                        <input type="number" id="dailyRent" placeholder="输入每日房租">
+                        <input type="number" id="dailyRent" placeholder="每日房租">
                     </div>
                     <div class="input-group">
                         <label for="dailyLabor">每日人工工资 (元):</label>
-                        <input type="number" id="dailyLabor" placeholder="输入每日人工工资">
+                        <input type="number" id="dailyLabor" placeholder="每日人工工资">
                     </div>
                     <div class="input-group">
                         <label for="dailyEnergy">每日能源成本 (元):</label>
-                        <input type="number" id="dailyEnergy" placeholder="输入每日能源成本">
+                        <input type="number" id="dailyEnergy" placeholder="每日能源成本">
                     </div>
                     <div class="input-group">
                         <label for="dailyOther">每日其他成本 (元):</label>
-                        <input type="number" id="dailyOther" placeholder="输入每日其他成本">
+                        <input type="number" id="dailyOther" placeholder="每日其他成本">
+                    </div>
+                    
+                    <div class="result-box">
+                        <h4>盈亏平衡点</h4>
+                        <div class="result-value" id="breakEvenPoint">0 元/天</div>
                     </div>
                 </div>
+            </div>
 
-                <div class="calc-card">
-                    <h3>盈亏平衡说明</h3>
-                    <p>盈亏平衡点 = (每日总成本) / 毛利率</p>
-                    <p>盈亏平衡点表示您每天需要达到的销售额才能不亏不赚。</p>
-                    <p>例如：每日总成本500元，毛利率50%，则盈亏平衡点为1000元/天。</p>
+            <!-- 回本周期计算部分 -->
+            <div class="calc-card">
+                <div class="card-header" onclick="toggleCard(this.parentNode)">
+                    <h2><i class="fas fa-history"></i> 回本周期</h2>
+                    <span class="card-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
-            </div>
-
-            <div class="result-box">
-                <h4>盈亏平衡点</h4>
-                <div class="result-value" id="breakEvenPoint">0 元/天</div>
-            </div>
-        </div>
-
-        <div class="tab-content" id="payback">
-            <div class="calc-grid">
-                <div class="calc-card">
-                    <h3>固定投资</h3>
+                <div class="card-content">
                     <div class="input-group">
                         <label for="fixedTechFee">技术学习费 (元):</label>
-                        <input type="number" id="fixedTechFee" placeholder="输入技术学习费">
+                        <input type="number" id="fixedTechFee" placeholder="技术学习费">
                     </div>
                     <div class="input-group">
                         <label for="fixedDecoration">装修费用 (元):</label>
-                        <input type="number" id="fixedDecoration" placeholder="输入装修费用">
+                        <input type="number" id="fixedDecoration" placeholder="装修费用">
                     </div>
                     <div class="input-group">
                         <label for="fixedAd">广告费用 (元):</label>
-                        <input type="number" id="fixedAd" placeholder="输入广告费用">
+                        <input type="number" id="fixedAd" placeholder="广告费用">
                     </div>
                     <div class="input-group">
                         <label for="fixedEquipment">设备费用 (元):</label>
-                        <input type="number" id="fixedEquipment" placeholder="输入设备费用">
+                        <input type="number" id="fixedEquipment" placeholder="设备费用">
                     </div>
-                </div>
-
-                <div class="calc-card">
-                    <h3>月利润</h3>
                     <div class="input-group">
                         <label for="monthlyProfit">单月利润 (元):</label>
-                        <input type="number" id="monthlyProfit" placeholder="输入单月利润">
+                        <input type="number" id="monthlyProfit" placeholder="单月利润">
+                    </div>
+                    
+                    <div class="result-box">
+                        <h4>回本周期</h4>
+                        <div class="result-value" id="paybackPeriod">0 个月</div>
                     </div>
                 </div>
-
-                <div class="calc-card">
-                    <h3>回本周期说明</h3>
-                    <p>回本周期 = 固定投资总额 / 单月利润</p>
-                    <p>回本周期表示您需要多少个月才能收回初始投资。</p>
-                    <p>通常，餐饮行业的回本周期在6-18个月之间被认为是健康的。</p>
-                </div>
-            </div>
-
-            <div class="result-box">
-                <h4>回本周期</h4>
-                <div class="result-value" id="paybackPeriod">0 个月</div>
             </div>
         </div>
 
@@ -495,28 +444,21 @@
         </div>
 
         <footer>
-            <p>© 2023 店铺投资计算器 | 使用提示：填写所有相关数据后点击"计算所有结果"</p>
+            <p>© 2023 店铺投资计算器 | 使用提示：填写数据后点击"计算所有结果"</p>
         </footer>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 选项卡功能
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
+            // 折叠面板功能
+            window.toggleCard = function(card) {
+                card.classList.toggle('collapsed');
+            };
             
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const tabId = btn.getAttribute('data-tab');
-                    
-                    // 更新按钮状态
-                    tabBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    
-                    // 更新内容显示
-                    tabContents.forEach(content => content.classList.remove('active'));
-                    document.getElementById(tabId).classList.add('active');
-                });
+            // 默认展开所有卡片
+            const cards = document.querySelectorAll('.calc-card');
+            cards.forEach(card => {
+                card.classList.remove('collapsed');
             });
             
             // 计算按钮
